@@ -8,7 +8,7 @@ function MyApp() {
 
     async function makeDeleteCall(id){
         try {
-        const response = await axios.delete('http://localhost:5000/users/' + id)
+        const response = await axios.delete('http://localhost:8000/users/' + id)
         return response;
         }
         catch (error) {
@@ -18,7 +18,7 @@ function MyApp() {
     }
 
     function removeOneCharacter (index) {
-        makeDeleteCall(characters.at(index)['id']).then( result => {
+        makeDeleteCall(characters.at(index)['_id']).then( result => {
             if (result.status === 204){
                 const updated = characters.filter((character, i) => {
                     return i !== index
@@ -35,7 +35,7 @@ function MyApp() {
 
     async function fetchAll(){
         try {
-            const response = await axios.get('http://localhost:5000/users');
+            const response = await axios.get('http://localhost:8000/users');
             return response.data.users_list;    
         }
         catch (error){
@@ -54,7 +54,7 @@ function MyApp() {
 
     async function makePostCall(person){
         try {
-        const response = await axios.post('http://localhost:5000/users', person);
+        const response = await axios.post('http://localhost:8000/users', person);
         return response;
         }
         catch (error) {
